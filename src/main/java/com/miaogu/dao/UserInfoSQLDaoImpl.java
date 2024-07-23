@@ -8,8 +8,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class UserInfoSQLDaoImpl implements UserInfoSQLDao {
@@ -35,13 +33,10 @@ public class UserInfoSQLDaoImpl implements UserInfoSQLDao {
                 JsonObject jsonObject = gson.fromJson(jsonData, JsonObject.class);
 
                 // 假设JSON数据格式类似 {"registerTime": "2024-07-23 12:00:00"}
-                String registerTimeStr = jsonObject.get("RegisterTime").getAsString();
-
-                // 解析日期时间字符串为Date对象
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                registerTime = sdf.parse(registerTimeStr);
+                long registerTimeStr = jsonObject.get("RegisterTime").getAsLong();
+                registerTime = new Date(registerTimeStr);
             }
-        } catch (SQLException | ParseException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             // 处理数据库异常或日期解析异常
         } finally {
@@ -50,5 +45,36 @@ public class UserInfoSQLDaoImpl implements UserInfoSQLDao {
         }
 
         return registerTime;
+    }
+
+    @Override
+    public void setRegisterTime(String username, Date registerTime) throws SQLException {
+        String insertSql = "INSERT INTO user_info_register (username, data) VALUES (?, ?)";
+        Connection conn = JDBCTools.getConn();
+        PreparedStatement insertStmt = conn.prepareStatement(insertSql);
+        insertStmt.setString(1, username);
+
+        // 创建一个 JsonObject 并添加 RegisterTime 字段
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("RegisterTime", registerTime.getTime());
+
+        // 将 JsonObject 转换为 JSON 字符串
+        Gson gson = new Gson();
+        String jsonData = gson.toJson(jsonObject);
+
+        // 将 JSON 字符串作为参数设置到 PreparedStatement 中
+        insertStmt.setString(2, jsonData);
+
+        // 执行插入操作
+        int rowsInserted = insertStmt.executeUpdate();
+        if (rowsInserted > 0) {
+            System.out.println("插入成功");
+        } else {
+            System.out.println("插入失败...");
+        }
+
+        // 关闭 PreparedStatement 和数据库连接
+        insertStmt.close();
+        conn.close();
     }
 }
