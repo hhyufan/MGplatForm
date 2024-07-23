@@ -132,3 +132,35 @@ body {
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+.personal-info {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto
+}
+.table__td {
+    background-color: #fff;
+    padding: 20px;
+    margin-left: 5px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+
+
+}
+.table__tr {
+        margin-bottom: 10px;
+            color: #8e9aaf;
+}
+.personal-info h3 {
+    color: #8e9aaf;
+    text-align: center;
+}

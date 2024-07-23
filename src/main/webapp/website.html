@@ -17,7 +17,7 @@
         </div>
         <nav class="nav">
             <ul>
-                <li><a href="#"><i class="fas fa-home"></i> 首页</a></li>
+                <li><a href="#" id="home-link"><i class="fas fa-home"></i> 首页</a></li>
                 <li><a href="#" id="personal-center-link"><i class="fas fa-user"></i> 个人中心</a></li>
                 <li><a href="#"><i class="fas fa-cog"></i> 设置</a></li>
                 <li><a href="#"><i class="fas fa-bell"></i> 通知</a></li>
@@ -54,8 +54,20 @@
             <section class="content" id="personal-center-section" style="display:none;">
                 <div class="personal-info">
                     <h3>个人中心</h3>
-                    <p id="username">用户名: </p>
-                    <p id="data">数据: </p>
+                    <div class="info-table">
+                        <div class="table__td">
+                            <div class="table__tr">用户名:</div>
+                            <div id="con_username" class="table__tr">bakaYuFan</div>
+                        </div>
+                        <div class="table__td">
+                            <div class="table__tr">注册时间:</div>
+                            <div id="register_time" class="table__tr">undefined</div>
+                        </div>
+                        <div class="table__td">
+                            <div class="table__tr">邮箱:</div>
+                            <div id="email" class="table__tr">email</div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
@@ -67,11 +79,10 @@
     </div>
 </div>
 
-<script src="js/theme.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/getName.js"></script>
 <script src="js/personalCenter.js"></script>
+<script src="js/section.js"></script>
 </body>
-
 </html>
