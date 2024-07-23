@@ -8,7 +8,10 @@ import com.miaogu.dao.UserInfoSQLDao;
 import com.miaogu.dao.UserInfoSQLDaoImpl;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
+import java.util.Locale;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,9 +40,13 @@ public class PersonalCenterServlet extends HttpServlet {
         try {
             String email = miaoGuSQLDao.getUserEmail(username); // 获取用户邮箱
             Date registerTime = userInfoSQLDao.getRegisterTime(username); // 获取用户注册时间
+            // 创建 SimpleDateFormat 对象，指定中国地区和日期格式
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
 
+            // 格式化日期并输出
+            String formattedDate = sdf.format(registerTime);
             jsonResponse.addProperty("Email", (email != null) ? email : "fail");
-            jsonResponse.addProperty("RegisterTime", (registerTime != null) ? registerTime.toString() : "fail");
+            jsonResponse.addProperty("RegisterTime", formattedDate);
 
             String json = gson.toJson(jsonResponse);
             response.getWriter().write(json);
