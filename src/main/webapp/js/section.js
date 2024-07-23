@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // 点击首页链接时显示首页 section
   homeLink.addEventListener('click', function(event) {
     event.preventDefault(); // 阻止默认行为
-    mainContentSection.style.display = 'block';
+    mainContentSection.style.display = 'flex';
     //window.location.href = "http://localhost:8080/MGManagePlatForm_war/website.html";
     personalCenterSection.style.display = 'none';
   });
