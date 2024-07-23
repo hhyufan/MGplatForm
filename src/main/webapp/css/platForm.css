@@ -1,0 +1,361 @@
+* {
+    /* 初始化 */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* 100%窗口高度 */
+    height: 100vh;
+    /* 弹性布局 水平+垂直居中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 渐变背景 */
+    background: linear-gradient(200deg, #fbed77, #d8b376);
+    /* 溢出隐藏 */
+    overflow: hidden;
+    /*渐变无法过渡：transition: background 0.5s ease-in-out;*/
+}
+
+
+
+.container {
+    background-color: #fff;
+    width: 650px;
+    height: 415px;
+    border-radius: 5px;
+    /* 阴影 */
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    /* 相对定位 */
+    position: relative;
+}
+
+.form-box {
+    /* 绝对定位 */
+    position: absolute;
+    top: -10%;
+    left: 5%;
+    background-color: #ebc777;
+    width: 320px;
+    height: 500px;
+    border-radius: 5px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    /* 动画过渡 加速后减速 */
+    transition: 0.5s ease-in-out;
+}
+
+.login-box {
+    /* 弹性布局 垂直排列 */
+    /* background-color: #ebc777; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.register-box {
+    /* 弹性布局 垂直排列 */
+    /* background-color: #d3b7d8; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.hidden {
+    display: none;
+    transition: 0.5s;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    /* 大写 */
+    text-transform: uppercase;
+    color: #fff;
+    /* 字间距 */
+    letter-spacing: 5px;
+}
+
+input {
+    background-color: transparent;
+    width: 70%;
+    color: #fff;
+    border: none;
+    /* 下边框样式 */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 10px 0;
+    text-indent: 10px;
+    margin: 8px 0;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+input::placeholder {
+    color: #fff;
+}
+
+.form-box .register-box input:focus {
+    color: #a262ad;
+    outline: none;
+    border-bottom: 1px solid #a262ad80;
+    transition: 0.5s;
+}
+
+.form-box .login-box input:focus {
+    color: #dbb824;
+    outline: none;
+    border-bottom: 1px solid yellow;
+    transition: 0.5s;
+}
+
+input:focus::placeholder {
+    opacity: 0;
+}
+.form-box button{
+    /* 按钮宽度设置为70% */
+    width: 70%;
+    /* 设置顶部外边距为35px */
+    margin-top: 35px;
+    /* 背景颜色设置为 #f6f6f6 */
+    background-color: #f6f6f6;
+    /* 无外边框 */
+    outline: none;
+    /* 圆角边框半径为8px */
+    border-radius: 8px;
+    /* 设置内边距为13px */
+    padding: 13px;
+    /* 字体颜色设置为 #a262ad */
+    color: #a262ad;
+    /* 设置字母间距为2px */
+    letter-spacing: 2px;
+    /* 无边框 */
+    border: none;
+    /* 指针样式改为手形 */
+    cursor: pointer;
+}
+.form-box .register-box button{
+    width: 70%;
+    margin-top: 35px;
+    background: #f6f6f6;
+    outline: none;
+    border-radius: 8px;
+    padding: 13px;
+    color: #a262ad;
+    letter-spacing: 2px;
+    border: none;
+    cursor: pointer;
+}
+
+.form-box .login-box button{
+    width: 70%;
+    margin-top: 35px;
+    background: #f6f6f6;
+    outline: none;
+    border-radius: 8px;
+    padding: 13px;
+    color: #dbb824;
+    letter-spacing: 2px;
+    border: none;
+    cursor: pointer;
+}
+
+.form-box .register-box button:hover{
+    background: #a262ad;
+    color: #f6f6f6;
+    transition: background-color 0.5s ease;
+}
+
+.form-box .login-box button:hover{
+    background:#dbb824;
+    color:  #f6f6f6;
+    transition: background-color 0.5s ease;
+}
+.form-box button:hover {
+    background: #a262ad;
+    color: #f6f6f6;
+    transition: background-color 0.5s ease;
+}
+
+.con-box {
+    width: 50%;
+    /* 弹性布局 垂直排列 居中 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* 绝对定位 居中 */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.con-box.left {
+    left: -2%;
+}
+.con-box.left button {
+
+    color: #a262ad;
+    border: 1px solid #d3b7d8;
+}
+.con-box.right {
+    right: -2%;
+}
+.con-box.right button {
+
+    color: #dbb824;
+    border: 1px solid #f2ee65;
+}
+.con-box h2 {
+    color: #8e9aaf;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+.con-box p {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #8e9aaf;
+    text-align: center;
+}
+
+.con-box span {
+    color: #d3b7d8;
+}
+.con-box .span_left {
+    color: #d3b7d8;
+}
+.con-box .span_right {
+    color: #ebc777;
+}
+.con-box img {
+    width: 150px;
+    height: 150px;
+    opacity: 0.9;
+    margin: 40px 0;
+}
+
+.con-box button {
+    margin-top: 3%;
+    background-color: #fff;
+    color: #a262ad;
+    border: 1px solid #d3b7d8;
+    padding: 6px 10px;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    outline: none;
+    cursor: pointer;
+}
+
+.con-box.left button:hover {
+    background-color: #d3b7d8;
+    color: #fff;
+}
+.con-box.right button:hover {
+    background-color: #ebc777;
+    color: #fff;
+}
+
+ul li{
+    position: absolute;
+    border: 1px solid #fff;
+    background-color: #fff;
+    width: 30px;
+    height: 30px;
+    list-style: none;
+    opacity: 0;
+}
+.square, .circle {
+    position: absolute;
+    z-index: -1;
+}
+.square li{
+    top: 40vh;
+    left: 60vw;
+    /* 执行动画：动画名 时长 线性的 无限次播放 */
+    animation: square 10s linear infinite;
+}
+.square li:nth-child(2){
+    top: 80vh;
+    left: 10vw;
+    /* 设置动画延迟时间 */
+    animation-delay: 2s;
+}
+.square li:nth-child(3){
+    top: 80vh;
+    left: 85vw;
+    /* 设置动画延迟时间 */
+    animation-delay: 4s;
+}
+.square li:nth-child(4){
+    top: 10vh;
+    left: 70vw;
+    /* 设置动画延迟时间 */
+    animation-delay: 6s;
+}
+.square li:nth-child(5){
+    top: 10vh;
+    left: 10vw;
+    /* 设置动画延迟时间 */
+    animation-delay: 8s;
+}
+.circle li{
+    bottom: 0;
+    left: 15vw;
+    /* 执行动画 */
+    animation: circle 10s linear infinite;
+}
+.circle li:nth-child(2){
+    left: 35vw;
+    /* 设置动画延迟时间 */
+    animation-delay: 2s;
+}
+.circle li:nth-child(3){
+    left: 55vw;
+    /* 设置动画延迟时间 */
+    animation-delay: 6s;
+}
+.circle li:nth-child(4){
+    left: 75vw;
+    /* 设置动画延迟时间 */
+    animation-delay: 4s;
+}
+.circle li:nth-child(5){
+    left: 90vw;
+    /* 设置动画延迟时间 */
+    animation-delay: 8s;
+}
+
+/* 定义动画 */
+@keyframes square {
+    0%{
+        transform: scale(0) rotateY(0deg);
+        opacity: 1;
+    }
+    100%{
+        transform: scale(5) rotateY(1000deg);
+        opacity: 0;
+    }
+}
+@keyframes circle {
+    0%{
+        transform: scale(0) rotateY(0deg);
+        opacity: 1;
+        bottom: 0;
+        border-radius: 0;
+    }
+    100%{
+        transform: scale(5) rotateY(1000deg);
+        opacity: 0;
+        bottom: 90vh;
+        border-radius: 50%;
+    }
+}
