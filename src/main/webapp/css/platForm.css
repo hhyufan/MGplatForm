@@ -48,7 +48,11 @@ body {
     /* 动画过渡 加速后减速 */
     transition: 0.5s ease-in-out;
 }
-
+.error-message {
+    color: #8e9aaf;
+    font-size: 16px;
+    text-align: left;
+}
 .login-box {
     /* 弹性布局 垂直排列 */
     /* background-color: #ebc777; */
