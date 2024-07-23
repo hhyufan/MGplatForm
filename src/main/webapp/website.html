@@ -19,8 +19,8 @@
             <ul>
                 <li><a href="#" id="home-link"><i class="fas fa-home"></i> 首页</a></li>
                 <li><a href="#" id="personal-center-link"><i class="fas fa-user"></i> 个人中心</a></li>
-                <li><a href="#"><i class="fas fa-cog"></i> 设置</a></li>
-                <li><a href="#"><i class="fas fa-bell"></i> 通知</a></li>
+                <li><a href="http://localhost:8080/MGManagePlatForm_war/loading.html"><i class="fas fa-cog"></i> 设置</a></li>
+                <li><a href="http://localhost:8080/MGManagePlatForm_war/loading.html"><i class="fas fa-bell"></i> 通知</a></li>
                 <li><a href="http://localhost:8080/MGManagePlatForm_war/index.jsp"><i class="fas fa-sign-out-alt"></i> 退出</a></li>
             </ul>
         </nav>
@@ -34,17 +34,17 @@
             </header>
             <section class="content" id="main-content-section">
                 <div class="cards">
-                    <div class="card">
+                    <div id="chart-line" class="card">
                         <i class="fas fa-chart-line"></i>
                         <h3>统计数据</h3>
                         <p>查看平台的统计数据。</p>
                     </div>
-                    <div class="card">
+                    <div id="users" class="card">
                         <i class="fas fa-users"></i>
                         <h3>用户管理</h3>
                         <p>管理平台用户信息。</p>
                     </div>
-                    <div class="card">
+                    <div id="envelope" class="card">
                         <i class="fas fa-envelope"></i>
                         <h3>消息中心</h3>
                         <p>查看和管理消息。</p>
@@ -78,9 +78,25 @@
         </footer>
     </div>
 </div>
-
+<div class="square">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<div class="circle">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="js/main.js"></script>
 <script src="js/getName.js"></script>
 <script src="js/personalCenter.js"></script>
 <script src="js/section.js"></script>
