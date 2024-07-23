@@ -5,4 +5,5 @@ import java.util.Date;
 
 public interface UserInfoSQLDao {
     Date getRegisterTime(String username) throws SQLException;
+    void setRegisterTime(String username, Date registerTime) throws SQLException;
 }
