@@ -11,5 +11,6 @@ public interface MiaoGuSQLDao {
 
     void insertOrUpdateUser(String username, String password , String email) throws SQLException;
 
+    String getUserEmail(String email) throws SQLException;
     Boolean isEmailExists(String email);
 }
