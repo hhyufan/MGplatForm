@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.miaogu.dao.MiaoGuSQLDao;
 import com.miaogu.dao.MiaoGuSQLDaoImpl;
+import com.miaogu.dao.UserInfoSQLDao;
+import com.miaogu.dao.UserInfoSQLDaoImpl;
 import com.miaogu.utils.JsonRequestHandler;
 
 import javax.servlet.*;
@@ -13,13 +15,18 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.Objects;
 
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
     private final MiaoGuSQLDao miaoGuSQLDao;
+    private final UserInfoSQLDao userInfoSQLDao;
+
     public RegisterServlet() {
+
         miaoGuSQLDao = new MiaoGuSQLDaoImpl();
+        userInfoSQLDao = new UserInfoSQLDaoImpl();
     }
 
 
@@ -52,6 +59,7 @@ public class RegisterServlet extends HttpServlet {
         if (Objects.equals(type, "register")) {
             if(!isUserExists && !isEmailExists) {
                 try {
+                    userInfoSQLDao.setRegisterTime(username, new Date());
                     HttpSession session = request.getSession();
                     miaoGuSQLDao.insertOrUpdateUser(username, password, email);
                     session.setAttribute("username", username);
