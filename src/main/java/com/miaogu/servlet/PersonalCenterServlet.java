@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.google.gson.JsonObject;
+import com.miaogu.utils.JDBCTools;
+
 @WebServlet("/PersonalCenterServlet")
 public class PersonalCenterServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -20,11 +22,7 @@ public class PersonalCenterServlet extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        String jdbcURL = "jdbc:mysql://localhost:3306/your_database";
-        String dbUser = "your_db_user";
-        String dbPassword = "your_db_password";
-
-        try (Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword)) {
+        try (Connection connection = JDBCTools.getConn()) {
             String sql = "SELECT username, data FROM user_info_register WHERE id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, 1); // Assuming you are fetching data for user with id 1
