@@ -1,10 +1,4 @@
 package com.miaogu.servlet;
-
-import com.miaogu.dao.MiaoGuSQLDao;
-import com.miaogu.dao.MiaoGuSQLDaoImpl;
-import com.miaogu.dao.UserInfoSQLDao;
-import com.miaogu.dao.UserInfoSQLDaoImpl;
-
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
