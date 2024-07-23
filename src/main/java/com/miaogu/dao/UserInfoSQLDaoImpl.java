@@ -24,7 +24,7 @@ public class UserInfoSQLDaoImpl implements UserInfoSQLDao {
         try {
             conn = JDBCTools.getConn();
 
-            String sql = "SELECT data FROM User WHERE username = ?";
+            String sql = "SELECT data FROM user_info_register WHERE username = ?";
             ps = conn.prepareStatement(sql);
             ps.setString(1, username);
             rs = ps.executeQuery();
@@ -35,7 +35,7 @@ public class UserInfoSQLDaoImpl implements UserInfoSQLDao {
                 JsonObject jsonObject = gson.fromJson(jsonData, JsonObject.class);
 
                 // 假设JSON数据格式类似 {"registerTime": "2024-07-23 12:00:00"}
-                String registerTimeStr = jsonObject.get("registerTime").getAsString();
+                String registerTimeStr = jsonObject.get("RegisterTime").getAsString();
 
                 // 解析日期时间字符串为Date对象
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

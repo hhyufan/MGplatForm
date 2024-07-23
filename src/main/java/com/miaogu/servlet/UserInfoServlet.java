@@ -13,11 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 @WebServlet("/userInfo")
 public class UserInfoServlet extends HttpServlet {
-    private final UserInfoSQLDao UserInfoSQLDao;
 
-    public UserInfoServlet() {
-        UserInfoSQLDao = new UserInfoSQLDaoImpl();
-    }
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession(false);
