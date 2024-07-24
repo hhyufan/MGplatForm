@@ -3,7 +3,8 @@ package com.miaogu.dao;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.miaogu.utils.JDBCTools;
-
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +12,7 @@ import java.sql.SQLException;
 import java.util.Date;
 
 public class UserInfoSQLDaoImpl implements UserInfoSQLDao {
-
+    private static final Logger logger = LogManager.getLogger(UserInfoSQLDaoImpl.class);
     @Override
     public Date getRegisterTime(String username) throws SQLException {
         Connection conn = null;
@@ -37,7 +38,7 @@ public class UserInfoSQLDaoImpl implements UserInfoSQLDao {
                 registerTime = new Date(registerTimeStr);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("SQLException", e);
             // 处理数据库异常或日期解析异常
         } finally {
             // 关闭连接，释放资源
