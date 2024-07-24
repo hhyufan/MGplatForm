@@ -95,7 +95,23 @@ body {
     transition: background 0.3s;
     /* 背景颜色变换的过渡时间 */
 }
+.sidebar .nav-item {
+    margin: 0 10px;
+}
 
+.sidebar .nav-item a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+
+/* 添加选中状态的样式 */
+.sidebar .nav-item.active a {
+    background-color: #d3b7d8; /* 选中时的背景色 */
+    color: rgba(213, 133, 248, 0.59); /* 选中时的文字颜色 */
+}
 .sidebar .nav ul li a i {
     /* 导航栏链接中的图标样式 */
     margin-right: 10px;
