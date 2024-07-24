@@ -1,14 +1,12 @@
 package com.miaogu.servlet;
 
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.miaogu.dao.MiaoGuSQLDao;
 import com.miaogu.dao.MiaoGuSQLDaoImpl;
-
+import com.miaogu.utils.JsonRequestHandler;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -22,28 +20,28 @@ public class LoginServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // 处理post的请求以及响应的乱码
         request.setCharacterEncoding("utf-8");
         response.setContentType("application/json;charset=utf-8");
-
-        // 读取请求体中的JSON数据
-        StringBuilder sb = new StringBuilder();
-        try (BufferedReader reader = request.getReader()) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                sb.append(line);
-            }
-        }
-
-        JsonObject jsonRequest = JsonParser.parseString(sb.toString()).getAsJsonObject();
+        JsonObject jsonRequest = JsonRequestHandler.handleJsonRequest(request);
+//        // 读取请求体中的JSON数据
+//        StringBuilder sb = new StringBuilder();
+//        try (BufferedReader reader = request.getReader()) {
+//            String line;
+//            while ((line = reader.readLine()) != null) {
+//                sb.append(line);
+//            }
+//        }
+//
+//        JsonObject jsonRequest = JsonParser.parseString(sb.toString()).getAsJsonObject();
         String username = jsonRequest.get("username").getAsString();
         String password = jsonRequest.get("password").getAsString();
         String type = jsonRequest.get("actionType").getAsString();
         boolean isEmailLogin = jsonRequest.get("isEmailLogin").getAsBoolean();
         Boolean isUserExists ;
         Boolean isEmailExists ;
-        String inputPassword = null;
+        String inputPassword;
         JsonObject jsonObject = new JsonObject();
         if(!isEmailLogin) {
             try {isUserExists = miaoGuSQLDao.isUserExists(username);
