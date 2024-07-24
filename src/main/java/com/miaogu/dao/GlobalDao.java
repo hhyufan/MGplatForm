@@ -1,4 +1,7 @@
 package com.miaogu.dao;
-public interface GlobalDao {
 
+import java.util.List;
+
+public interface GlobalDao {
+    List<String> getAdministrator();
 }
