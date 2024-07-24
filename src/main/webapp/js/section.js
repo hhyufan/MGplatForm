@@ -6,6 +6,18 @@ document.addEventListener('DOMContentLoaded', function() {
   const chartLine  = document.getElementById('chart-line');
   const users = document.getElementById('users');
   const envelope = document.getElementById('envelope');
+  fetch('http://localhost:8080/MGManagePlatForm_war/userInfo', {
+    method: 'GET',
+    credentials: 'include'
+  }).then(async response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return await response.json();
+  }).then(data => {
+    chartLine.style.display = data.isAdministrator ? 'block' : 'none';
+    users.style.display = data.isAdministrator ? 'block' : 'none';
+  });
   // 点击首页链接时显示首页 section
   homeLink.addEventListener('click', function(event) {
     event.preventDefault(); // 阻止默认行为
