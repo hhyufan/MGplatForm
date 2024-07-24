@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 在这里处理从 userInfo 接口获取的数据
                 const username = data.username;
                 const paragraph = document.getElementById('con_username');
-                paragraph.textContent = `用户名: ${username}`;
+                paragraph.textContent = `${username}`;
 
                 // 发起获取 PersonalCenterServlet 响应的请求
                 return fetch('http://localhost:8080/MGManagePlatForm_war/personal', {
