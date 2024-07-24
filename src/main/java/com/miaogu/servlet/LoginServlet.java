@@ -25,16 +25,6 @@ public class LoginServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setContentType("application/json;charset=utf-8");
         JsonObject jsonRequest = JsonRequestHandler.handleJsonRequest(request);
-//        // 读取请求体中的JSON数据
-//        StringBuilder sb = new StringBuilder();
-//        try (BufferedReader reader = request.getReader()) {
-//            String line;
-//            while ((line = reader.readLine()) != null) {
-//                sb.append(line);
-//            }
-//        }
-//
-//        JsonObject jsonRequest = JsonParser.parseString(sb.toString()).getAsJsonObject();
         String username = jsonRequest.get("username").getAsString();
         String password = jsonRequest.get("password").getAsString();
         String type = jsonRequest.get("actionType").getAsString();
