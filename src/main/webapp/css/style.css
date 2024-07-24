@@ -1,167 +1,287 @@
 * {
+    /* 全局选择器，设置所有元素的样式 */
     margin: 0;
+    /* 去除所有元素的外边距 */
     padding: 0;
+    /* 去除所有元素的内边距 */
     box-sizing: border-box;
+    /* 使元素的宽高包括内边距和边框 */
 }
 
 body {
+    /* body 标签的样式 */
     font-family: 'Arial', sans-serif;
+    /* 设置字体 */
     background: linear-gradient(200deg, #fbed77, #d8b376);
+    /* 设置线性渐变背景 */
     height: 100vh;
+    /* 设置高度为视口高度 */
     display: flex;
+    /* 使用 flex 布局 */
     justify-content: center;
+    /* 水平居中 */
     align-items: center;
+    /* 垂直居中 */
     overflow: hidden;
+    /* 隐藏溢出内容 */
 }
 
 .wrapper {
+    /* 包裹整个布局的容器 */
     display: flex;
+    /* 使用 flex 布局 */
     width: 100%;
+    /* 占满整个宽度 */
     height: 100%;
+    /* 占满整个高度 */
 }
 
 .sidebar {
+    /* 侧边栏样式 */
     width: 250px;
+    /* 固定宽度 */
     background-color: #ebc777;
+    /* 背景颜色 */
     display: flex;
+    /* 使用 flex 布局 */
     flex-direction: column;
+    /* 垂直排列子元素 */
     align-items: center;
+    /* 子元素水平居中 */
     padding: 20px;
+    /* 内边距 */
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    /* 侧边栏阴影 */
 }
 
 .sidebar .logo h1 {
+    /* 侧边栏 logo 的标题样式 */
     color: #fff;
+    /* 字体颜色 */
     margin-bottom: 30px;
+    /* 下外边距 */
 }
 
 .sidebar .nav ul {
+    /* 导航栏列表样式 */
     list-style: none;
+    /* 去除列表样式 */
     width: 100%;
+    /* 占满整个宽度 */
 }
 
 .sidebar .nav ul li {
+    /* 导航栏列表项样式 */
     width: 100%;
+    /* 占满整个宽度 */
     margin-bottom: 20px;
+    /* 下外边距 */
 }
 
 .sidebar .nav ul li a {
+    /* 导航栏链接样式 */
     display: flex;
+    /* 使用 flex 布局 */
     align-items: center;
+    /* 子元素垂直居中 */
     color: #fff;
+    /* 字体颜色 */
     text-decoration: none;
+    /* 去除下划线 */
     padding: 10px;
+    /* 内边距 */
     border-radius: 5px;
+    /* 圆角边框 */
     transition: background 0.3s;
+    /* 背景颜色变换的过渡时间 */
 }
 
 .sidebar .nav ul li a i {
+    /* 导航栏链接中的图标样式 */
     margin-right: 10px;
+    /* 右外边距 */
 }
 
 .sidebar .nav ul li a:hover {
+    /* 导航栏链接悬停样式 */
     background-color: #d3b7d8;
+    /* 背景颜色改变 */
 }
 
 .main-wrapper {
+    /* 主内容包裹容器 */
     display: flex;
+    /* 使用 flex 布局 */
     flex-direction: column;
+    /* 垂直排列子元素 */
     width: calc(100% - 250px);
+    /* 剩余宽度 */
     height: 100%;
+    /* 占满整个高度 */
 }
 
 .main-content {
+    /* 主内容样式 */
     flex: 1;
+    /* 占满剩余空间 */
     padding: 20px;
+    /* 内边距 */
     display: flex;
+    /* 使用 flex 布局 */
     flex-direction: column;
+    /* 垂直排列子元素 */
 }
 
 .header {
+    /* 头部样式 */
     background-color: #fff;
+    /* 背景颜色 */
     padding: 20px;
+    /* 内边距 */
     border-radius: 5px;
+    /* 圆角边框 */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* 阴影 */
     margin-bottom: 20px;
+    /* 下外边距 */
 }
 
 .header h2 {
+    /* 头部标题样式 */
     color: #8e9aaf;
+    /* 字体颜色 */
 }
 
 .content {
+    /* 内容区样式 */
     flex: 1;
+    /* 占满剩余空间 */
     display: flex;
+    /* 使用 flex 布局 */
     height: 100%;
+    /* 占满整个高度 */
     justify-content: center;
+    /* 水平居中 */
     align-items: center;
+    /* 垂直居中 */
 }
 
 .cards {
+    /* 卡片容器样式 */
     display: flex;
+    /* 使用 flex 布局 */
     gap: 20px;
+    /* 卡片之间的间距 */
 }
 
 .card {
+    /* 单个卡片样式 */
     background-color: #fff;
+    /* 背景颜色 */
     padding: 20px;
+    /* 内边距 */
     border-radius: 5px;
+    /* 圆角边框 */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* 阴影 */
     text-align: center;
+    /* 文字居中 */
     width: 200px;
+    /* 固定宽度 */
 }
 
 .card i {
+    /* 卡片内图标样式 */
     font-size: 40px;
+    /* 字体大小 */
     color: #ebc777;
+    /* 字体颜色 */
     margin-bottom: 10px;
+    /* 下外边距 */
 }
 
 .card h3 {
+    /* 卡片标题样式 */
     margin-bottom: 10px;
+    /* 下外边距 */
     color: #8e9aaf;
+    /* 字体颜色 */
 }
 
 .card p {
+    /* 卡片内容文字样式 */
     color: #8e9aaf;
+    /* 字体颜色 */
 }
 
 .footer {
+    /* 底部样式 */
     background-color: #fff;
+    /* 背景颜色 */
     padding: 10px;
+    /* 内边距 */
     text-align: center;
+    /* 文字居中 */
     border-radius: 5px;
+    /* 圆角边框 */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* 阴影 */
 }
 
 .personal-info {
+    /* 个人信息区域样式 */
     background-color: #fff;
+    /* 背景颜色 */
     padding: 20px;
+    /* 内边距 */
     border-radius: 5px;
+    /* 圆角边框 */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* 阴影 */
     text-align: center;
+    /* 文字居中 */
     width: 100%;
+    /* 占满整个宽度 */
     height: 100%;
-    margin: 0 auto
+    /* 占满整个高度 */
+    margin: 0 auto;
+    /* 水平居中 */
 }
+
 .table__td {
+    /* 表格单元格样式 */
     background-color: #fff;
+    /* 背景颜色 */
     padding: 20px;
+    /* 内边距 */
     margin-left: 5px;
+    /* 左外边距 */
     margin-top: 10px;
+    /* 上外边距 */
     margin-right: 10px;
+    /* 右外边距 */
     border-radius: 5px;
+    /* 圆角边框 */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* 阴影 */
     text-align: center;
+    /* 文字居中 */
     width: 100%;
-
-
+    /* 占满整个宽度 */
 }
+
 .table__tr {
-        margin-bottom: 10px;
-            color: #8e9aaf;
-}
-.personal-info h3 {
+    /* 表格行样式 */
+    margin-bottom: 10px;
+    /* 下外边距 */
     color: #8e9aaf;
+    /* 字体颜色 */
+}
+
+.personal-info h3 {
+    /* 个人信息标题样式 */
+    color: #8e9aaf;
+    /* 字体颜色 */
     text-align: center;
+    /* 文字居中 */
 }
