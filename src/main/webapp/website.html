@@ -1,91 +1,113 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
+<!-- 文档类型声明，表明这是一个 HTML5 文档 -->
 <head>
+    <!-- 设置网页的编码方式为 UTF-8 -->
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <!-- 设置视口，页面宽度随设备宽度变化，初始缩放比例为1，最大缩放比例为1，禁止用户缩放 -->
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <!-- 网页标题 -->
     <title>喵咕平台</title>
+    <!-- 链接外部 CSS 文件，定义页面样式 -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- 引入 Font Awesome 图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
-    <div class="wrapper">
-        <!-- 侧栏 -->
-        <aside class="sidebar">
-            <div class="logo">
-                <h1>喵咕</h1>
-            </div>
-            <nav class="nav">
-                <ul>
-                    <li><a href="#" id="home-link"><i class="fas fa-home"></i> 首页</a></li>
-                    <li><a href="#" id="personal-center-link"><i class="fas fa-user"></i> 个人中心</a></li>
-                    <li><a href="http://localhost:8080/MGManagePlatForm_war/loading.html"><i class="fas fa-cog"></i>
-                            设置</a></li>
-                    <li><a href="http://localhost:8080/MGManagePlatForm_war/loading.html"><i class="fas fa-bell"></i>
-                            通知</a></li>
-                    <li><a href="http://localhost:8080/MGManagePlatForm_war/index.jsp"><i
-                                class="fas fa-sign-out-alt"></i> 退出</a></li>
-                </ul>
-            </nav>
-        </aside>
-
-        <!-- 主体 -->
-        <div class="main-wrapper">
-            <main class="main-content">
-                <header class="header">
-                    <h2>欢迎来到喵咕平台</h2>
-                </header>
-                <section class="content" id="main-content-section">
-                    <div class="cards">
-                        <div id="chart-line" class="card">
-                            <i class="fas fa-chart-line"></i>
-                            <h3>统计数据</h3>
-                            <p>查看平台的统计数据。</p>
-                        </div>
-                        <div id="users" class="card">
-                            <i class="fas fa-users"></i>
-                            <h3>用户管理</h3>
-                            <p>管理平台用户信息。</p>
-                        </div>
-                        <div id="envelope" class="card">
-                            <i class="fas fa-envelope"></i>
-                            <h3>消息中心</h3>
-                            <p>查看和管理消息。</p>
-                        </div>
-                    </div>
-                </section>
-                <section class="content" id="personal-center-section" style="display:none;">
-                    <div class="personal-info">
-                        <h3>个人中心</h3>
-                        <div class="info-table">
-                            <div class="table__td">
-                                <div class="table__tr">用户名:</div>
-                                <div id="con_username" class="table__tr">bakaYuFan</div>
-                            </div>
-                            <div class="table__td">
-                                <div class="table__tr">注册时间:</div>
-                                <div id="register_time" class="table__tr">undefined</div>
-                            </div>
-                            <div class="table__td">
-                                <div class="table__tr">邮箱:</div>
-                                <div id="email" class="table__tr">email</div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </main>
-
-            <!-- 页脚 -->
-            <footer class="footer">
-                <p>&copy; 2024 喵咕平台. 版权所有.</p>
-            </footer>
+<!-- 页面包含全部内容的容器 -->
+<div class="wrapper">
+    <!-- 侧栏开始 -->
+    <aside class="sidebar">
+        <!-- 侧栏中的 logo -->
+        <div class="logo">
+            <h1>喵咕</h1>
         </div>
+        <!-- 侧栏中的导航菜单 -->
+        <nav class="nav">
+            <ul>
+                <!-- 导航菜单项 -->
+                <li><a href="#" id="home-link"><i class="fa fa-home" aria-hidden="true" /></i> 首页</a></li>
+                <li><a href="#" id="personal-center-link"><i class="fas fa-user"></i> 个人中心</a></li>
+                <li><a href="http://localhost:8080/MGManagePlatForm_war/loading.html"><i class="fas fa-cog"></i> 设置</a></li>
+                <li><a href="http://localhost:8080/MGManagePlatForm_war/loading.html"><i class="fas fa-bell"></i> 通知</a></li>
+                <li><a href="http://localhost:8080/MGManagePlatForm_war/index.jsp"><i class="fas fa-sign-out-alt"></i> 退出</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <!-- 侧栏结束 -->
+
+    <!-- 主体内容开始 -->
+    <div class="main-wrapper">
+        <main class="main-content">
+            <!-- 页眉部分 -->
+            <header class="header">
+                <h2>欢迎来到喵咕平台</h2>
+            </header>
+            <!-- 主内容部分 -->
+            <section class="content" id="main-content-section">
+                <div class="cards">
+                    <!-- 卡片：统计数据 -->
+                    <div id="chart-line" class="card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>统计数据</h3>
+                        <p>查看平台的统计数据。</p>
+                    </div>
+                    <!-- 卡片：用户管理 -->
+                    <div id="users" class="card">
+                        <i class="fas fa-users"></i>
+                        <h3>用户管理</h3>
+                        <p>管理平台用户信息。</p>
+                    </div>
+                    <!-- 卡片：消息中心 -->
+                    <div id="envelope" class="card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>消息中心</h3>
+                        <p>查看和管理消息。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 个人中心部分，初始隐藏 -->
+            <section class="content" id="personal-center-section" style="display:none;">
+                <div class="personal-info">
+                    <h3>个人中心</h3>
+                    <!-- 用户信息表格 -->
+                    <div class="info-table">
+                        <!-- 用户名行 -->
+                        <div class="table__td">
+                            <div class="table__tr">用户名:</div>
+                            <div id="con_username" class="table__tr">bakaYuFan</div>
+                        </div>
+                        <!-- 注册时间行 -->
+                        <div class="table__td">
+                            <div class="table__tr">注册时间:</div>
+                            <div id="register_time" class="table__tr">undefined</div>
+                        </div>
+                        <!-- 邮箱行 -->
+                        <div class="table__td">
+                            <div class="table__tr">邮箱:</div>
+                            <div id="email" class="table__tr">email</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 页脚部分 -->
+        <footer class="footer">
+            <p>&copy; 2024 喵咕平台. 版权所有.</p>
+        </footer>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="js/getName.js"></script>
-    <script src="js/personalCenter.js"></script>
-    <script src="js/section.js"></script>
+    <!-- 主体内容结束 -->
+</div>
+
+<!-- 引入 jQuery 库 -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- 引入自定义的 JavaScript 文件 -->
+<script src="js/getName.js"></script>
+<script src="js/personalCenter.js"></script>
+<script src="js/section.js"></script>
 </body>
 
 </html>
