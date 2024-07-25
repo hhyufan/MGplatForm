@@ -12,7 +12,7 @@ body {
     /* body 标签的样式 */
     font-family: 'Arial', sans-serif;
     /* 设置字体 */
-    background: linear-gradient(200deg, #fbed77, #d8b376);
+    background: linear-gradient(200deg, rgba(239,249,79,0.8), rgba(231,215,86,0.6));
     /* 设置线性渐变背景 */
     height: 100vh;
     /* 设置高度为视口高度 */
@@ -109,18 +109,17 @@ body {
 
 /* 添加选中状态的样式 */
 .sidebar .nav-item.active a {
-    background-color: #d3b7d8; /* 选中时的背景色 */
-    color: rgba(213, 133, 248, 0.59); /* 选中时的文字颜色 */
+    background-color: rgba(240, 241, 241, 0.6); /* 选中时的背景色 */
+    color: rgba(198, 78, 249, 0.59); /* 选中时的文字颜色 */
 }
 .sidebar .nav ul li a i {
     /* 导航栏链接中的图标样式 */
     margin-right: 10px;
     /* 右外边距 */
 }
-
 .sidebar .nav ul li a:hover {
     /* 导航栏链接悬停样式 */
-    background-color: #d3b7d8;
+    background-color: rgb(211, 183, 216);
     /* 背景颜色改变 */
 }
 
@@ -149,6 +148,7 @@ body {
 }
 
 .header {
+    position: relative;
     /* 头部样式 */
     background-color: #fff;
     /* 背景颜色 */
@@ -300,4 +300,56 @@ body {
     /* 字体颜色 */
     text-align: center;
     /* 文字居中 */
+}
+.switch {
+    width: 60px;
+    height: 34px;
+    position: relative; /* 绝对定位标签 */
+    top: 50%; /* 上边界居中 */
+    transform: translateY(-50%); /* 垂直居中 */
+    right: 0; /* 相对于容器最右边对齐 */
+}
+.switch-container {
+    position: absolute;
+    top: 70%;
+    transform: translateY(-50%);
+    right: 10px; /* 调整此处的右侧偏移量 */
+}
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(200deg, #fbed77, #f0c784); /* Initial background color */
+    transition:  filter 0.4s ease;
+    border-radius: 34px;
+    filter: hue-rotate(0deg); /* Initial filter value */
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: transform 0.4s ease;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    filter: hue-rotate(220deg); /* Change filter value */
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
 }
