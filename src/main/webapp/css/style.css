@@ -117,11 +117,11 @@ body {
     margin-right: 10px;
     /* 右外边距 */
 }
-.sidebar .nav ul li a:hover {
-    /* 导航栏链接悬停样式 */
-    background-color: rgb(211, 183, 216);
-    /* 背景颜色改变 */
-}
+/*.sidebar .nav ul li a:hover {*/
+/*    !* 导航栏链接悬停样式 *!*/
+/*    background-color: rgb(211, 183, 216);*/
+/*    !* 背景颜色改变 *!*/
+/*}*/
 
 .main-wrapper {
     /* 主内容包裹容器 */
