@@ -3,6 +3,8 @@ package com.miaogu.servlet;
 import com.google.gson.JsonObject;
 import com.miaogu.dao.MiaoGuSQLDao;
 import com.miaogu.dao.MiaoGuSQLDaoImpl;
+import com.miaogu.dao.UserInfoSQLDao;
+import com.miaogu.dao.UserInfoSQLDaoImpl;
 import com.miaogu.utils.JsonRequestHandler;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -10,13 +12,16 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.Objects;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
     private final MiaoGuSQLDao miaoGuSQLDao;
+    private final UserInfoSQLDao userInfoSQLDao;
     public LoginServlet() {
         miaoGuSQLDao = new MiaoGuSQLDaoImpl();
+        userInfoSQLDao = new UserInfoSQLDaoImpl();
     }
 
     @Override
@@ -53,6 +58,13 @@ public class LoginServlet extends HttpServlet {
         if (Objects.equals(type, "login")) {
             HttpSession session = request.getSession();
             jsonObject.addProperty("correctPassword", Objects.equals(inputPassword, password));
+            if (Objects.equals(inputPassword, password)) {
+                try {
+                    userInfoSQLDao.setLastLoginTime(username, new Date());
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
             session.setAttribute("username", Objects.equals(inputPassword, password) ? username: null);
         }
 
