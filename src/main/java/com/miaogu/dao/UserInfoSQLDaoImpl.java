@@ -15,6 +15,10 @@ public class UserInfoSQLDaoImpl implements UserInfoSQLDao {
     private static final Logger logger = LogManager.getLogger(UserInfoSQLDaoImpl.class);
     @Override
     public Date getRegisterTime(String username) throws SQLException {
+        return getDate(username, "registerTime");
+    }
+
+    private static Date getDate(String username, String key) throws SQLException {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -34,7 +38,7 @@ public class UserInfoSQLDaoImpl implements UserInfoSQLDao {
                 JsonObject jsonObject = gson.fromJson(jsonData, JsonObject.class);
 
                 // 假设JSON数据格式类似 {"registerTime": "2024-07-23 12:00:00"}
-                long registerTimeStr = jsonObject.get("RegisterTime").getAsLong();
+                long registerTimeStr = jsonObject.get(key).getAsLong();
                 registerTime = new Date(registerTimeStr);
             }
         } catch (SQLException e) {
@@ -50,6 +54,10 @@ public class UserInfoSQLDaoImpl implements UserInfoSQLDao {
 
     @Override
     public void setRegisterTime(String username, Date registerTime) throws SQLException {
+        setTime(username, "RegisterTime",registerTime);
+    }
+
+    private static void setTime(String username, String key, Date time) throws SQLException {
         String insertSql = "INSERT INTO user_info_register (username, data) VALUES (?, ?)";
         Connection conn = JDBCTools.getConn();
         PreparedStatement insertStmt = conn.prepareStatement(insertSql);
@@ -57,7 +65,7 @@ public class UserInfoSQLDaoImpl implements UserInfoSQLDao {
 
         // 创建一个 JsonObject 并添加 RegisterTime 字段
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("RegisterTime", registerTime.getTime());
+        jsonObject.addProperty(key, time.getTime());
 
         // 将 JsonObject 转换为 JSON 字符串
         Gson gson = new Gson();
@@ -77,5 +85,15 @@ public class UserInfoSQLDaoImpl implements UserInfoSQLDao {
         // 关闭 PreparedStatement 和数据库连接
         insertStmt.close();
         conn.close();
+    }
+
+    @Override
+    public Date getLastLoginTime(String username) throws SQLException {
+        return getDate(username, "LastLoginTime");
+    }
+
+    @Override
+    public void setLastLoginTime(String username, Date lastLoginTime) throws SQLException {
+        setTime(username, "LastLoginTime", lastLoginTime);
     }
 }
