@@ -83,7 +83,9 @@ h1 {
     /* 设置字母之间的间距为5像素 */
     letter-spacing: 5px;
 }
-
+h2 {
+    margin-top: 8px;
+}
 input {
     background-color: transparent; /* 背景颜色为透明 */
     width: 70%; /* 输入框宽度为父元素的70% */
