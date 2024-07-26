@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!data["correctPassword"]) {
                 loginError.textContent = "密码输入错误。";
             } else {
-                alert('Login successful!');
                 loginError.textContent = "登录成功！";
                 window.location.replace('website.html');
             }

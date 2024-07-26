@@ -55,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     form.reset()
                     return;
                 }
-                alert('register successful!');
                 registerError.textContent = "注册成功！";
                 form.reset()
                 window.location.replace('website.html');
