@@ -40,10 +40,7 @@ public class PersonalCenterServlet extends HttpServlet {
             String email = miaoGuSQLDao.getUserEmail(username); // 获取用户邮箱
             Date registerTime = userInfoSQLDao.getRegisterTime(username); // 获取用户注册时间
             // 创建 SimpleDateFormat 对象，指定中国地区和日期格式
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
-
-            // 格式化日期并输出
-            String formattedDate = sdf.format(registerTime);
+            String formattedDate = getChineseTime(registerTime);
             jsonResponse.addProperty("Email", (email != null) ? email : "fail");
             jsonResponse.addProperty("RegisterTime", formattedDate);
 
@@ -52,6 +49,12 @@ public class PersonalCenterServlet extends HttpServlet {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private static String getChineseTime(Date registerTime) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
+        // 格式化日期并输出
+        return sdf.format(registerTime);
     }
 
     @Override
