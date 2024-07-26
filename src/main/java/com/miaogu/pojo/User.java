@@ -1,5 +1,7 @@
 package com.miaogu.pojo;
 
+import com.google.gson.Gson;
+
 public class User {
 
     private String userName;
@@ -7,10 +9,26 @@ public class User {
     private String email;
 
     private String passWord;
+    private Gson Data;
     public User(String userName, String passWord, String email) {
         this.userName = userName;
         this.passWord = passWord;
         this.email = email;
+    }
+
+    public Gson getData() {
+        return Data;
+    }
+
+    public void setData(Gson data) {
+        Data = data;
+    }
+
+    public User(String userName, String passWord, String email, Gson data) {
+        this.userName = userName;
+        this.passWord = passWord;
+        this.email = email;
+        this.Data = data;
     }
     public String getUserName() {
         return userName;
