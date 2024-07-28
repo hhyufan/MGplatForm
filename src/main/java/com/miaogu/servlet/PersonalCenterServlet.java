@@ -6,6 +6,9 @@ import com.miaogu.dao.MiaoGuSQLDao;
 import com.miaogu.dao.MiaoGuSQLDaoImpl;
 import com.miaogu.dao.UserInfoSQLDao;
 import com.miaogu.dao.UserInfoSQLDaoImpl;
+import com.miaogu.utils.GsonQueueConverter;
+import com.miaogu.utils.MyQueue;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -23,10 +26,12 @@ public class PersonalCenterServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private final UserInfoSQLDao userInfoSQLDao;
     private final MiaoGuSQLDao miaoGuSQLDao;
+
     public PersonalCenterServlet() {
         miaoGuSQLDao = new MiaoGuSQLDaoImpl();
         userInfoSQLDao = new UserInfoSQLDaoImpl();
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession(false);
@@ -36,18 +41,30 @@ public class PersonalCenterServlet extends HttpServlet {
         Gson gson = new Gson();
         JsonObject jsonResponse = new JsonObject();
 
-        try {
-            String email = miaoGuSQLDao.getUserEmail(username); // 获取用户邮箱
-            Date registerTime = userInfoSQLDao.getRegisterTime(username); // 获取用户注册时间
-            // 创建 SimpleDateFormat 对象，指定中国地区和日期格式
-            String formattedDate = getChineseTime(registerTime);
-            jsonResponse.addProperty("Email", (email != null) ? email : "fail");
-            jsonResponse.addProperty("RegisterTime", formattedDate);
+        if (username == null) {
+            jsonResponse.addProperty("error", "User not logged in");
+            response.getWriter().write(gson.toJson(jsonResponse));
+            return;
+        }
 
+        try {
+            String email = miaoGuSQLDao.getUserEmail(username);
+            if (email == null) {
+                jsonResponse.addProperty("error", "Email not found");
+            }
+            Date registerTime = userInfoSQLDao.getRegisterTime(username);
+            if (registerTime == null) {
+                jsonResponse.addProperty("error", "Register time not found");
+            }
+
+
+            jsonResponse.addProperty("Email", (email != null) ? email : "fail");
+            jsonResponse.addProperty("RegisterTime", (registerTime != null) ? getChineseTime(registerTime) : "undefined");
             String json = gson.toJson(jsonResponse);
             response.getWriter().write(json);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            jsonResponse.addProperty("error", "Database error: " + e.getMessage());
+            response.getWriter().write(gson.toJson(jsonResponse));
         }
     }
 
@@ -59,6 +76,6 @@ public class PersonalCenterServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+        doGet(req, resp);
     }
 }

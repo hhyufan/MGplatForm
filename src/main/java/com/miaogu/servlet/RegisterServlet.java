@@ -50,6 +50,7 @@ public class RegisterServlet extends HttpServlet {
             if(!isUserExists && !isEmailExists) {
                 try {
                     userInfoSQLDao.setRegisterTime(username, new Date());
+                    userInfoSQLDao.setLastLoginTime(username, new Date());
                     HttpSession session = request.getSession();
                     miaoGuSQLDao.insertOrUpdateUser(username, password, email);
                     session.setAttribute("username", username);
