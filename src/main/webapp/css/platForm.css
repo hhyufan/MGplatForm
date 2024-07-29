@@ -12,7 +12,9 @@ body {
     overflow: hidden;
     /* 注释掉背景过渡效果，因为线性渐变无法过渡: transition: background 0.5s ease-in-out; */
 }
-
+.container *:not(input) {
+    user-select: none; /* 除了input标签外，禁止所有子元素的文本选择 */
+}
 .container {
     background-color: #fff;
     width: 650px;

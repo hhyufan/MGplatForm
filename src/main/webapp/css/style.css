@@ -25,7 +25,9 @@ body {
     overflow: hidden;
     /* 隐藏溢出内容 */
 }
-
+.wrapper *:not(input) {
+    user-select: none; /* 除了input标签外，禁止所有子元素的文本选择 */
+}
 .wrapper {
     /* 包裹整个布局的容器 */
     display: flex;
