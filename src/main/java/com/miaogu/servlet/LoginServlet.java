@@ -7,7 +7,6 @@ import com.miaogu.dao.MiaoGuSQLDao;
 import com.miaogu.dao.MiaoGuSQLDaoImpl;
 import com.miaogu.dao.UserInfoSQLDao;
 import com.miaogu.dao.UserInfoSQLDaoImpl;
-import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.BufferedReader;
@@ -70,7 +69,7 @@ public class LoginServlet extends HttpServlet {
         String username = getStringFromJson(jsonRequest, "username");
         String password = getStringFromJson(jsonRequest, "password");
         String type = getStringFromJson(jsonRequest, "actionType");
-        Boolean isEmailLogin = getBooleanFromJson(jsonRequest, "isEmailLogin");
+        Boolean isEmailLogin = getBooleanFromJson(jsonRequest);
 
         // 检查是否有缺少的属性
         if (username == null || password == null || type == null || isEmailLogin == null) {
@@ -84,9 +83,9 @@ public class LoginServlet extends HttpServlet {
 
         logError("JSON properties: username=" + username + ", password=" + password + ", actionType=" + type + ", isEmailLogin=" + isEmailLogin);
 
-        Boolean isUserExists = null;
-        Boolean isEmailExists = null;
-        String inputPassword = null;
+        Boolean isUserExists;
+        Boolean isEmailExists;
+        String inputPassword;
         JsonObject jsonObject = new JsonObject();
 
         try {
@@ -141,7 +140,7 @@ public class LoginServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         doPost(request, response);
     }
 
@@ -158,15 +157,15 @@ public class LoginServlet extends HttpServlet {
         return null;
     }
 
-    private Boolean getBooleanFromJson(JsonObject jsonObject, String key) {
-        if (jsonObject.has(key) && !jsonObject.get(key).isJsonNull()) {
+    private Boolean getBooleanFromJson(JsonObject jsonObject) {
+        if (jsonObject.has("isEmailLogin") && !jsonObject.get("isEmailLogin").isJsonNull()) {
             try {
-                return jsonObject.get(key).getAsBoolean();
+                return jsonObject.get("isEmailLogin").getAsBoolean();
             } catch (ClassCastException | IllegalStateException e) {
-                logError("Invalid value for key: " + key, e);
+                logError("Invalid value for key: " + "isEmailLogin", e);
             }
         } else {
-            logError("Missing or null value for key: " + key);
+            logError("Missing or null value for key: " + "isEmailLogin");
         }
         return null;
     }
