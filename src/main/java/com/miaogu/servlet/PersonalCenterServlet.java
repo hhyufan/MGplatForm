@@ -6,15 +6,11 @@ import com.miaogu.dao.MiaoGuSQLDao;
 import com.miaogu.dao.MiaoGuSQLDaoImpl;
 import com.miaogu.dao.UserInfoSQLDao;
 import com.miaogu.dao.UserInfoSQLDaoImpl;
-import com.miaogu.utils.GsonQueueConverter;
-import com.miaogu.utils.MyQueue;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -75,7 +71,7 @@ public class PersonalCenterServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         doGet(req, resp);
     }
 }

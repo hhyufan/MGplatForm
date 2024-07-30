@@ -1,7 +1,6 @@
 package com.miaogu.utils;
 
 import com.google.gson.Gson;
-import org.jetbrains.annotations.NotNull;
 
 public class GsonQueueConverter {
 

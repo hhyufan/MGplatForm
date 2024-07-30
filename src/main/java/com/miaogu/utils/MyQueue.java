@@ -7,7 +7,7 @@ import java.util.Iterator;
 
 public class MyQueue<E> implements java.util.Queue<E> {
 
-    private ArrayDeque<E> deque;
+    private final ArrayDeque<E> deque;
 
     public MyQueue() {
         deque = new ArrayDeque<>();
@@ -79,7 +79,7 @@ public class MyQueue<E> implements java.util.Queue<E> {
     }
 
     @Override
-    public <T> T @NotNull [] toArray(T[] a) {
+    public <T> T @NotNull [] toArray(T @NotNull [] a) {
         return deque.toArray(a);
     }
 
@@ -89,22 +89,22 @@ public class MyQueue<E> implements java.util.Queue<E> {
     }
 
     @Override
-    public boolean containsAll(java.util.Collection<?> c) {
+    public boolean containsAll(java.util.@NotNull Collection<?> c) {
         return deque.containsAll(c);
     }
 
     @Override
-    public boolean addAll(java.util.Collection<? extends E> c) {
+    public boolean addAll(java.util.@NotNull Collection<? extends E> c) {
         return deque.addAll(c);
     }
 
     @Override
-    public boolean removeAll(java.util.Collection<?> c) {
+    public boolean removeAll(java.util.@NotNull Collection<?> c) {
         return deque.removeAll(c);
     }
 
     @Override
-    public boolean retainAll(java.util.Collection<?> c) {
+    public boolean retainAll(java.util.@NotNull Collection<?> c) {
         return deque.retainAll(c);
     }
 

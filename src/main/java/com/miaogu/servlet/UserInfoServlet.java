@@ -5,7 +5,6 @@ import com.miaogu.dao.GlobalDao;
 import com.miaogu.dao.GlobalDaoImpl;
 import com.miaogu.dao.UserInfoSQLDao;
 import com.miaogu.dao.UserInfoSQLDaoImpl;
-import com.miaogu.pojo.User;
 import com.miaogu.utils.GsonQueueConverter;
 import com.miaogu.utils.MyQueue;
 
@@ -17,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Objects;
 
 @WebServlet("/userInfo")
 public class UserInfoServlet extends HttpServlet {
@@ -35,7 +33,7 @@ public class UserInfoServlet extends HttpServlet {
         String username = (session != null) ? (String) session.getAttribute("username") : null;
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-        JsonObject jsonResponse = null;
+        JsonObject jsonResponse;
         try {
             jsonResponse = getJsonObject(username);
         } catch (SQLException e) {
