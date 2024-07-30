@@ -76,43 +76,25 @@ public class MiaoGuSQLDaoImpl  implements MiaoGuSQLDao{
         conn.close();
     }
 
-    @Override
     public String getUserPassword(String username) throws SQLException {
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-
-        String sql = "SELECT password, email FROM User WHERE username = ?";
-        User user = null;
-        Connection conn = null;
-        try {
-            conn = JDBCTools.getConn();
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, username);
-            rs = ps.executeQuery();
-
-            if (rs.next()) {
-                String passWord = rs.getString("password");
-                String email = rs.getString("email");
-                System.out.println("username:" + username);
-                user = new User(username, passWord, email);
-            } else {
-                System.out.println("用户不存在: " + username);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            JDBCTools.closeCoon(conn, ps, rs);
-        }
+        User user = getUserByUsername(username);
         return user != null ? user.getPassWord() : null;
     }
+
     @Override
     public String getUserEmail(String username) throws SQLException {
+        User user = getUserByUsername(username);
+        return user != null ? user.getEmail() : null;
+    }
+
+    private User getUserByUsername(String username) throws SQLException {
         PreparedStatement ps = null;
         ResultSet rs = null;
+        Connection conn = null;
 
         String sql = "SELECT password, email FROM User WHERE username = ?";
         User user = null;
-        Connection conn = null;
+
         try {
             conn = JDBCTools.getConn();
             ps = conn.prepareStatement(sql);
@@ -132,7 +114,8 @@ public class MiaoGuSQLDaoImpl  implements MiaoGuSQLDao{
         } finally {
             JDBCTools.closeCoon(conn, ps, rs);
         }
-        return user != null ? user.getEmail() : null;
+
+        return user;
     }
 
     public String getEmailPassword(String email) throws SQLException {
@@ -165,7 +148,7 @@ public class MiaoGuSQLDaoImpl  implements MiaoGuSQLDao{
     }
     public Boolean isEmailExists(String email) {
         String sql = "SELECT * FROM User WHERE email = ?";
-        Connection conn = null;
+        Connection conn;
         conn = JDBCTools.getConn();
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, email);
